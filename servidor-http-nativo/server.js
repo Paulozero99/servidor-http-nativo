@@ -5,12 +5,15 @@ const PORTA = 3000
 const server = http.createServer((req, res) => {
     console.log(`Requisão recebida! ${req.method} ${req.url}`)
     
-    res.statusCode = 200
-    res.setHeader('Content-Type', 'text/plain; charset=uft-8')
+    res.statusCode = 201
+    res.setHeader('Content-Type', 'application/json; charset=utf-8')
 
-    res.end("Servidor nativo funcionando!")
+    res.end(JSON.stringify({ status: "ok" }))
 })
 
 server.listen(PORTA, () => {
     console.log(`Servidor funcionando na porta ${PORTA}`)
+    console.log(new Date().toISOString())
 })
+
+//o servidor não devolveria uma resposta para o usuario, pois a requisição não seria resolvida assim o serividor iria ficar carregando infinitamente
