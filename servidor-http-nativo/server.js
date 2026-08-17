@@ -9,6 +9,7 @@ const produtos = [
     {id: 4, nome: "Pelucia do Sonic"}
 ]
 
+
 //res de response e req de request
 const server = http.createServer((req, res) => {
     res.statusCode = 200
