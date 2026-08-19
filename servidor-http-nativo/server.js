@@ -16,6 +16,8 @@ const server = http.createServer((req, res) => {
     res.setHeader('Content-Type', 'application/json; charset=utf-8')
 
     if(req.method == "GET" && req.url == "/contato"){
+        console.log(`${req.method} ${req.url}`)
+
         return res.end(
             JSON.stringify([
                 {data: {"número_telefone": "67-99999-9999", endereco: "Rua Alegria, 99, Centro"}}
@@ -24,9 +26,23 @@ const server = http.createServer((req, res) => {
     }
 
     if(req.method == "GET" && req.url == "/produtos"){
+        console.log(`${req.method} ${req.url}`)
+
         return res.end(
             JSON.stringify(produtos)
         )
+    }
+
+    if(req.method == "GET" && req.url == "/status"){
+        console.log(`${req.method} ${req.url}`)
+
+        return res.end(
+            JSON.stringify({status: "ok"})
+        )
+    }
+
+    else{
+        return res.end(JSON.stringify(`Pagina_inexistente! Error ${res.statusCode = 404}`))
     }
 
     res.end(JSON.stringify({data: "Página inicial"}))
